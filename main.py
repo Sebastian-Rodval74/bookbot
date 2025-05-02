@@ -1,11 +1,5 @@
 
-def count_words(text):
-    count = 0
-    words = text.split()
-    for word in words:
-        count += 1
-    return count
-    
+  
 def get_book_text(path):
     with open(path) as f:
         text = f.read()
@@ -14,8 +8,17 @@ def get_book_text(path):
 def main():
     path = "books/frankenstein.txt"
     text = get_book_text(path)
+    from stats import count_words
+    from stats import each_character
     word_count = count_words(text)
-    print(f"{word_count} words found in the document")
+    new = each_character(text)
+    print("============ BOOKBOT ============")
+    print(f"Analyzing book found at {path}...")
+    print("----------- Word Count ----------")
+    print(f"Found {word_count} total words")
+    print("--------- Character Count -------")
+    print(new)
+
 
 main()
  
