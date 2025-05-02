@@ -1,4 +1,4 @@
-
+import sys
   
 def get_book_text(path):
     with open(path) as f:
@@ -6,7 +6,10 @@ def get_book_text(path):
         return text
     
 def main():
-    path = "books/frankenstein.txt"
+    if len(sys.argv) != 2:  # Check for exactly 2 items (script name + book path)
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)  # Exit with error code 1
+    path = sys.argv[1]
     text = get_book_text(path)
     from stats import count_words
     from stats import each_character
@@ -19,6 +22,6 @@ def main():
     print("--------- Character Count -------")
     print(new)
 
-
-main()
+if __name__ == "__main__":
+    main()
  
